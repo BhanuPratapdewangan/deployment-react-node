@@ -11,11 +11,13 @@ const SignupComponent = () => {
   const [userError, setUserError] = useState('');
   const navigate = useNavigate();
   const [color, setColor] = useState('');
+  
+  // const backend_url = "https://deployment-backend-3in9.onrender.com/";
 
   useEffect(() => {
     axios({
       method: "get",
-      url: "http://localhost:5500/users"
+      url: "https://deployment-backend-3in9.onrender.com/users"
     })
       .then(response => {
         setUsers(response.data);
@@ -62,7 +64,7 @@ const SignupComponent = () => {
         onSubmit={(values) => {
           axios({
             method: "post",
-            url: "http://localhost:5500/signup",
+            url: "https://deployment-backend-3in9.onrender.com/signup",
             data: values
           }).then(() => {
             alert(`SignUp Successfully...!`);
