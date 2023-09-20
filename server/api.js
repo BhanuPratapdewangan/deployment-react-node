@@ -12,12 +12,12 @@ const PORT = process.env.PORT || 5500
 
 // const backend_url = "https://deployment-backend-3in9.onrender.com/";
 
-// const corsOptions ={
-//     origin:'https://deployment-frontend-w7vr.onrender.com', 
-//     credentials:true,            //access-control-allow-credentials:true
-//     optionSuccessStatus:200
-// }
-app.use(cors());
+const corsOptions ={
+    origin:'https://deployment-frontend-w7vr.onrender.com', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
+}
+app.use(cors(corsOptions));
 
 app.use(urlencoded({extended:true}));
 app.use(express.json());
