@@ -14,7 +14,7 @@ app.use(cors());
 app.use(urlencoded({extended:true}));
 app.use(express.json());
 
-app.get('https://deployment-backend-3in9.onrender.com/users', (req, res) => {
+app.get('/users', (req, res) => {
 
     Mongodb.connect(connString).then(clientObject => {
 
@@ -28,7 +28,7 @@ app.get('https://deployment-backend-3in9.onrender.com/users', (req, res) => {
 
 
 
-app.get('https://deployment-backend-3in9.onrender.com/signin', (req, res) => {
+app.get('/signin', (req, res) => {
 
     Mongodb.connect(connString).then(clientObject => {
 
@@ -41,7 +41,7 @@ app.get('https://deployment-backend-3in9.onrender.com/signin', (req, res) => {
 })
 
 
-app.post('https://deployment-backend-3in9.onrender.com/signup', async(req, res) => {
+app.post('/signup', async(req, res) => {
     
     var data = {
         UserId : req.body.UserId,
