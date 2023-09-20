@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 5500
 // const backend_url = "https://deployment-backend-3in9.onrender.com/";
 
 const corsOptions ={
-    origin:'https://deployment-backend-3in9.onrender.com/', 
+    origin:'http://localhost:3000', 
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
