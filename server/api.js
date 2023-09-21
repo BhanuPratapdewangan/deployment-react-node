@@ -12,23 +12,40 @@ const PORT = process.env.PORT || 4500
 
 // const backend_url = "https://deployment-backend-3in9.onrender.com/";
 
-const corsOptions = {
-    origin: 'https://deployment-frontend-w7vr.onrender.com',
-    // credentials:true,            //access-control-allow-credentials:true
-    // optionSuccessStatus:200
-}
+// const corsOptions = {
+//     origin: 'https://deployment-frontend-w7vr.onrender.com',
+//     // credentials:true,            //access-control-allow-credentials:true
+//     // optionSuccessStatus:200
+// }
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+app.use(cors());
 
 app.use(urlencoded({ extended: true }));
 app.use(express.json());
 
-app.options("/", (req, res) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    // res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
-    // res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-    // res.sendStatus(204);
-});
+
+app.use((req, res, next) => {
+    // Allow requests from a specific origin (replace with your frontend URL)
+    res.header('Access-Control-Allow-Origin', 'https://deployment-frontend-w7vr.onrender.com');
+  
+    // Allow other necessary headers and HTTP methods
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  
+    // Allow credentials (if needed)
+    res.header('Access-Control-Allow-Credentials', 'true');
+  
+    // Continue to the next middleware
+    next();
+  });
+
+// app.options("/", (req, res) => {
+//     res.setHeader("Access-Control-Allow-Origin", "*");
+//     // res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
+//     // res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+//     // res.sendStatus(204);
+// });
 
 
 app.get('/api/data', (req, res) => {
