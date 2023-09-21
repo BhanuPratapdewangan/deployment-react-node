@@ -17,7 +17,7 @@ const SignupComponent = () => {
   useEffect(() => {
     axios({
       method: "get",
-      url: "https://deployment-backend-3in9.onrender.com/users"
+      url: "https://deployment-backend-3in9.onrender.com/signin"
     })
       .then(response => {
         setUsers(response.data);
