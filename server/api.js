@@ -48,30 +48,30 @@ app.use((req, res, next) => {
 // });
 
 
-app.get('/api/data', (req, res) => {
-    // Your API logic here
-    Mongodb.connect(connString).then(clientObject => {
+// app.get('/api/data', (req, res) => {
+//     // Your API logic here
+//     Mongodb.connect(connString).then(clientObject => {
 
-        var database = clientObject.db("demo");
-        database.collection("users").find({}).toArray().then(document => {
-            res.send(document);
-            res.json({ message: 'This is a response from the API' });
-            res.end();
-        })
-    })
-});
+//         var database = clientObject.db("demo");
+//         database.collection("users").find({}).toArray().then(document => {
+//             res.send(document);
+//             res.json({ message: 'This is a response from the API' });
+//             res.end();
+//         })
+//     })
+// });
 
-app.get('/users', (req, res) => {
+// app.get('/user', (req, res) => {
 
-    Mongodb.connect(connString).then(clientObject => {
+//     Mongodb.connect(connString).then(clientObject => {
 
-        var database = clientObject.db("demo");
-        database.collection("users").find({}).toArray().then(document => {
-            res.send(document);
-            res.end();
-        })
-    })
-})
+//         var database = clientObject.db("demo");
+//         database.collection("users").find({}).toArray().then(document => {
+//             res.send(document);
+//             res.end();
+//         })
+//     })
+// })
 
 
 
