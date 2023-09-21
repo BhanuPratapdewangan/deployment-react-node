@@ -64,7 +64,7 @@ const SignupComponent = () => {
         onSubmit={(values) => {
           axios({
             method: "post",
-            url: "https://deployment-backend-3in9.onrender.com/signup",
+            url: "http://localhost:3000/api/signup",
             data: values
           }).then(() => {
             alert(`SignUp Successfully...!`);
