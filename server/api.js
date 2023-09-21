@@ -8,7 +8,7 @@ const connString = "mongodb://127.0.0.1:27017";
 
 const app = express();
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 4500
 
 // const backend_url = "https://deployment-backend-3in9.onrender.com/";
 
