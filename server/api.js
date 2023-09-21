@@ -84,7 +84,7 @@ app.use('/api', createProxyMiddleware({
 
 
 
-app.get('/signin', (req, res) => {
+app.get('/api/signin', (req, res) => {
 
     Mongodb.connect(connString).then(clientObject => {
 
@@ -97,7 +97,7 @@ app.get('/signin', (req, res) => {
 })
 
 
-app.post('/signup', async (req, res) => {
+app.post('/api/signup', async (req, res) => {
 
     var data = {
         UserId: req.body.UserId,
