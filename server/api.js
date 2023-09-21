@@ -1,6 +1,7 @@
 import { MongoClient as Mongodb } from "mongodb";
 import express, { urlencoded } from 'express';
 import cors from 'cors';
+import { createProxyMiddleware } from "http-proxy-middleware";
 
 // const connString = 'mongodb+srv://bhanupratap04123:JfrGwm5Op3rxNokC@cluster0.3uck13t.mongodb.net/?retryWrites=true&w=majority';
 
@@ -8,7 +9,9 @@ const connString = "mongodb://127.0.0.1:27017";
 
 const app = express();
 
-const PORT = process.env.PORT || 4500
+// const PORT = process.env.PORT || 4500
+
+const port = 3000;
 
 // const backend_url = "https://deployment-backend-3in9.onrender.com/";
 
@@ -28,17 +31,23 @@ app.use(express.json());
 app.use((req, res, next) => {
     // Allow requests from a specific origin (replace with your frontend URL)
     res.header('Access-Control-Allow-Origin', 'https://deployment-frontend-w7vr.onrender.com');
-  
+
     // Allow other necessary headers and HTTP methods
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  
+
     // Allow credentials (if needed)
     res.header('Access-Control-Allow-Credentials', 'true');
-  
+
     // Continue to the next middleware
     next();
-  });
+});
+
+app.use('/api', createProxyMiddleware({
+    target: 'https://deployment-backend-3in9.onrender.com',
+    changeOrigin: true,
+    // Add any other proxy options you may need
+}));
 
 // app.options("/", (req, res) => {
 //     res.setHeader("Access-Control-Allow-Origin", "*");
@@ -114,6 +123,10 @@ app.connect((req, res) => {
     res.end();
 })
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT} `);
-})
+// app.listen(PORT, () => {
+//     console.log(`Server is running on port ${PORT} `);
+// })
+
+app.listen(port, () => {
+    console.log(`Proxy server is running on port ${port}`);
+});
