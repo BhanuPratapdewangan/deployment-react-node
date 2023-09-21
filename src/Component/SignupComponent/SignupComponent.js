@@ -17,7 +17,7 @@ const SignupComponent = () => {
   useEffect(() => {
     axios({
       method: "get",
-      url: "http://localhost:3000/api/signin"
+      url: "http://localhost:4500/api/signin"
     })
       .then(response => {
         setUsers(response.data);
@@ -64,7 +64,7 @@ const SignupComponent = () => {
         onSubmit={(values) => {
           axios({
             method: "post",
-            url: "http://localhost:3000/api/signup",
+            url: "http://localhost:4500/api/signup",
             data: values
           }).then(() => {
             alert(`SignUp Successfully...!`);
